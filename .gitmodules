@@ -1,0 +1,28 @@
+[submodule "external/injector"]
+	path = external/injector
+	url = https://github.com/thelink2012/injector.git
+[submodule "external/ModUtils"]
+	path = external/ModUtils
+	url = https://github.com/CookiePLMonster/ModUtils.git
+[submodule "external/Logging"]
+	path = external/Logging
+	url = https://github.com/elishacloud/Logging
+[submodule "external/spdlog"]
+	path = external/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "external/eHooking"]
+	path = external/eHooking
+	url = https://github.com/nipkownix/Hooking
+[submodule "external/DirectXMath"]
+	path = external/DirectXMath
+	url = https://github.com/microsoft/DirectXMath
+[submodule "external/json"]
+	path = external/json
+	url = https://github.com/nlohmann/json
+[submodule "external/ImGuiFileDialog"]
+	path = external/ImGuiFileDialog
+	url = https://github.com/aiekick/ImGuiFileDialog/
+	branch = Lib_Only
+[submodule "external/simpleini"]
+	path = external/simpleini
+	url = https://github.com/brofield/simpleini

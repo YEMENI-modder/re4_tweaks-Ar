@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C68F48DD-0B73-4C69-9CEB-D8F3E1369D97}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>dllmain</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>dllmain</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+    <LocalDebuggerCommand>$(BIO4_BIN)\bio4.exe</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>$(BIO4_BIN)</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+    <LocalDebuggerCommand>$(BIO4_BIN)\bio4.exe</LocalDebuggerCommand>
+    <LocalDebuggerWorkingDirectory>$(BIO4_BIN)</LocalDebuggerWorkingDirectory>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetName>dinput8</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>dinput8</TargetName>
+    <ExternalIncludePath>..\external\spdlog\include;$(ExternalIncludePath)</ExternalIncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\settings;..\includes;..\external;..\external\freetype\include;..\external\ModUtils;..\external\injector\include;..\external\SimpleIni;..\external\spdlog\include;..\external\imgui;..\external\ImGuiFileDialog;..\external\DirectXMath\Inc;..\external\json\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>..\wrappers\x86.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>..\external\freetype\lib\debug_static;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>freetype.lib;wininet.lib;urlmon.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)$(TargetFileName)" "%BIO4_BIN%\$(TargetFileName)"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>del gitparams.h
+FOR /F "tokens=*" %%g IN ('git rev-parse --verify HEAD') do (SET VAR=%%g)
+echo | set /p dummyName=#define GIT_CUR_COMMIT ^"%VAR%^" &gt;&gt;  gitparams.h
+echo: &gt;&gt; gitparams.h
+FOR /F "tokens=*" %%g IN ('git rev-parse --abbrev-ref HEAD') do (SET VAR=%%g)
+echo | set /p dummyName=#define GIT_BRANCH ^"%VAR%^" &gt;&gt; gitparams.h</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories>..\settings;..\includes;..\external;..\external\freetype\include;..\external\ModUtils;..\external\injector\include;..\external\SimpleIni;..\external\imgui;..\external\ImGuiFileDialog;..\external\DirectXMath\Inc;..\external\json\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_WINDLL;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <UseStandardPreprocessor>
+      </UseStandardPreprocessor>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <ModuleDefinitionFile>..\wrappers\x86.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>..\external\freetype\lib\release_static;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>freetype.lib;wininet.lib;urlmon.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(TargetDir)$(TargetFileName)" "%BIO4_BIN%\$(TargetFileName)"</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>del gitparams.h
+FOR /F "tokens=*" %%g IN ('git rev-parse --verify HEAD') do (SET VAR=%%g)
+echo | set /p dummyName=#define GIT_CUR_COMMIT ^"%VAR%^" &gt;&gt;  gitparams.h
+echo: &gt;&gt; gitparams.h
+FOR /F "tokens=*" %%g IN ('git rev-parse --abbrev-ref HEAD') do (SET VAR=%%g)
+echo | set /p dummyName=#define GIT_BRANCH ^"%VAR%^" &gt;&gt; gitparams.h</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\external\eHooking\Hook.cpp" />
+    <ClCompile Include="..\external\eHooking\HotPatch.cpp" />
+    <ClCompile Include="..\external\eHooking\IATPatch.cpp" />
+    <ClCompile Include="..\external\ImGuiFileDialog\ImGuiFileDialog.cpp" />
+    <ClCompile Include="..\external\imgui\imgui.cpp" />
+    <ClCompile Include="..\external\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\external\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\external\imgui\imgui_impl_dx9.cpp" />
+    <ClCompile Include="..\external\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="..\external\imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\external\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="..\external\imgui\misc\cpp\imgui_stdlib.cpp" />
+    <ClCompile Include="..\external\imgui\misc\freetype\imgui_freetype.cpp" />
+    <ClCompile Include="..\external\miniz\miniz.c" />
+    <ClCompile Include="..\external\ModUtils\Patterns.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MaxSpeed</Optimization>
+      <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4005;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4005;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ClCompile Include="..\wrappers\wrappers.cpp" />
+    <ClCompile Include="DisplayModeFix.cpp" />
+    <ClCompile Include="FrameRateFixes.cpp" />
+    <ClCompile Include="AudioTweaks.cpp" />
+    <ClCompile Include="AutoUpdater.cpp" />
+    <ClCompile Include="CameraTweaks.cpp" />
+    <ClCompile Include="CommandLine.cpp" />
+    <ClCompile Include="ConsoleWnd.cpp" />
+    <ClCompile Include="ControllerTweaks.cpp" />
+    <ClCompile Include="D3D9hook.cpp" />
+    <ClCompile Include="DebugDisplay.cpp" />
+    <ClCompile Include="DisplayTweaks.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="ArabicText.cpp" />
+    <ClCompile Include="ArabicUI.cpp" />
+    <ClCompile Include="EndSceneHook.cpp" />
+    <ClCompile Include="ExceptionHandler.cpp" />
+    <ClCompile Include="GameFlags.cpp" />
+    <ClCompile Include="Gameplay.cpp" />
+    <ClCompile Include="HDProject.cpp" />
+    <ClCompile Include="HUDTweaks.cpp" />
+    <ClCompile Include="input.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="KeyboardMouseTweaks.cpp" />
+    <ClCompile Include="LAApatch.cpp" />
+    <ClCompile Include="Misc.cpp" />
+    <ClCompile Include="ModExpansion.cpp" />
+    <ClCompile Include="MotionFixes.cpp" />
+    <ClCompile Include="MouseTurning.cpp" />
+    <ClCompile Include="QTEFixes.cpp" />
+    <ClCompile Include="MathReimpl.cpp" />
+    <ClCompile Include="RoomInfo.cpp" />
+    <ClCompile Include="cfgMenu.cpp" />
+    <ClCompile Include="HandleLimits.cpp" />
+    <ClCompile Include="Sections.cpp" />
+    <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="Sofdec.cpp" />
+    <ClCompile Include="FilterXXFixes.cpp" />
+    <ClCompile Include="AspectRatioTweaks.cpp" />
+    <ClCompile Include="TitleMenu.cpp" />
+    <ClCompile Include="Trainer.cpp" />
+    <ClCompile Include="Trainer_ItemMgr.cpp" />
+    <ClCompile Include="UI_DebugWindows.cpp" />
+    <ClCompile Include="UI_Utility.cpp" />
+    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="WndProcHook.cpp" />
+    <ClCompile Include="ToolMenu.cpp" />
+    <ClCompile Include="ToolMenuDebug.cpp" />
+    <ClCompile Include="ToolMenuLights.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\external\eHooking\Hook.h" />
+    <ClInclude Include="..\external\ImGuiFileDialog\ImGuiFileDialog.h" />
+    <ClInclude Include="..\external\imgui\imconfig.h" />
+    <ClInclude Include="..\external\imgui\imgui.h" />
+    <ClInclude Include="..\external\imgui\imgui_impl_dx9.h" />
+    <ClInclude Include="..\external\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="..\external\imgui\imgui_internal.h" />
+    <ClInclude Include="..\external\imgui\imstb_rectpack.h" />
+    <ClInclude Include="..\external\imgui\imstb_textedit.h" />
+    <ClInclude Include="..\external\imgui\imstb_truetype.h" />
+    <ClInclude Include="..\external\imgui\misc\cpp\imgui_stdlib.h" />
+    <ClInclude Include="..\external\imgui\misc\freetype\imgui_freetype.h" />
+    <ClInclude Include="..\external\injector\include\injector\assembly.hpp" />
+    <ClInclude Include="..\external\injector\include\injector\calling.hpp" />
+    <ClInclude Include="..\external\injector\include\injector\hooking.hpp" />
+    <ClInclude Include="..\external\injector\include\injector\injector.hpp" />
+    <ClInclude Include="..\external\injector\include\injector\utility.hpp" />
+    <ClInclude Include="..\external\miniz\miniz.h" />
+    <ClInclude Include="..\external\ModUtils\DelimStringReader.h" />
+    <ClInclude Include="..\external\ModUtils\MemoryMgr.h" />
+    <ClInclude Include="..\external\ModUtils\Patterns.h" />
+    <ClInclude Include="..\external\simpleini\SimpleIni.h" />
+    <ClInclude Include="..\external\spdlog\include\spdlog\spdlog.h" />
+    <ClInclude Include="..\includes\exception.hpp" />
+    <ClInclude Include="..\includes\FAhashes.h" />
+    <ClInclude Include="..\includes\FAprolight.hpp" />
+    <ClInclude Include="..\includes\IBMPlexSansJP_M.hpp" />
+    <ClInclude Include="..\includes\iniReader.h" />
+    <ClInclude Include="..\includes\log.h" />
+    <ClInclude Include="..\includes\ModuleList.hpp" />
+    <ClInclude Include="..\settings\settings.ini">
+      <FileType>Text</FileType>
+    </ClInclude>
+    <ClInclude Include="..\settings\trainer_settings.ini">
+      <FileType>Text</FileType>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\bink2w64.h" />
+    <ClInclude Include="..\wrappers\binkw32.h" />
+    <ClInclude Include="..\wrappers\d3d10.h" />
+    <ClInclude Include="..\wrappers\d3d11.h" />
+    <ClInclude Include="..\wrappers\d3d12.h" />
+    <ClInclude Include="..\wrappers\d3d8.h" />
+    <ClInclude Include="..\wrappers\d3d9.h" />
+    <ClInclude Include="..\wrappers\ddraw.h" />
+    <ClInclude Include="..\wrappers\dinput.h" />
+    <ClInclude Include="..\wrappers\dinput8.h" />
+    <ClInclude Include="..\wrappers\dsound.h" />
+    <ClInclude Include="..\wrappers\msacm32.h" />
+    <ClInclude Include="..\wrappers\msvfw32.h" />
+    <ClInclude Include="..\wrappers\shared.h" />
+    <ClInclude Include="..\wrappers\version.h" />
+    <ClInclude Include="..\wrappers\wininet.h" />
+    <ClInclude Include="..\wrappers\winmm.h" />
+    <ClInclude Include="..\wrappers\wrappers.h" />
+    <ClInclude Include="..\wrappers\X3DAudio1_7.h" />
+    <ClInclude Include="..\wrappers\xinput1_3.h" />
+    <ClInclude Include="AudioTweaks.h" />
+    <ClInclude Include="ConsoleWnd.h" />
+    <ClInclude Include="D3D9hook.h" />
+    <ClInclude Include="dllmain.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameFlags.h" />
+    <ClInclude Include="gitparams.h" />
+    <ClInclude Include="HUDTweaks.h" />
+    <ClInclude Include="input.hpp" />
+    <ClInclude Include="Patches.h" />
+    <ClInclude Include="SDK\atari.h" />
+    <ClInclude Include="SDK\atariInfo.h" />
+    <ClInclude Include="SDK\basic_types.h" />
+    <ClInclude Include="SDK\camera.h" />
+    <ClInclude Include="SDK\cam_ctrl.h" />
+    <ClInclude Include="SDK\card.h" />
+    <ClInclude Include="SDK\cCoord.h" />
+    <ClInclude Include="SDK\cDataSwap.h" />
+    <ClInclude Include="SDK\cloth.h" />
+    <ClInclude Include="SDK\cManager.h" />
+    <ClInclude Include="SDK\cMotBase.h" />
+    <ClInclude Include="SDK\cockpit.h" />
+    <ClInclude Include="SDK\cUnit.h" />
+    <ClInclude Include="SDK\em.h" />
+    <ClInclude Include="SDK\em10.h" />
+    <ClInclude Include="SDK\em_set.h" />
+    <ClInclude Include="SDK\EtcModel.h" />
+    <ClInclude Include="SDK\event.h" />
+    <ClInclude Include="SDK\fade.h" />
+    <ClInclude Include="SDK\filter00.h" />
+    <ClInclude Include="SDK\ID.h" />
+    <ClInclude Include="SDK\gc_math.h" />
+    <ClInclude Include="SDK\global.h" />
+    <ClInclude Include="SDK\GX.h" />
+    <ClInclude Include="SDK\GXEnums.h" />
+    <ClInclude Include="SDK\GXStruct.h" />
+    <ClInclude Include="SDK\item.h" />
+    <ClInclude Include="SDK\light.h" />
+    <ClInclude Include="sdk\merchant.h" />
+    <ClInclude Include="SDK\message.h" />
+    <ClInclude Include="SDK\model.h" />
+    <ClInclude Include="SDK\obj.h" />
+    <ClInclude Include="SDK\objWep.h" />
+    <ClInclude Include="SDK\pad.h" />
+    <ClInclude Include="SDK\player.h" />
+    <ClInclude Include="SDK\pl_wep.h" />
+    <ClInclude Include="SDK\puzzle.h" />
+    <ClInclude Include="SDK\roomdata.h" />
+    <ClInclude Include="SDK\room_jmp.h" />
+    <ClInclude Include="SDK\snd.h" />
+    <ClInclude Include="SDK\sscrn.h" />
+    <ClInclude Include="SDK\title.h" />
+    <ClInclude Include="Sections.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Trainer.h" />
+    <ClInclude Include="UI_DebugWindows.h" />
+    <ClInclude Include="ArabicFont.hpp" />
+    <ClInclude Include="ArabicText.h" />
+    <ClInclude Include="ArabicUI.h" />
+    <ClInclude Include="UI_Utility.h" />
+    <ClInclude Include="Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="dllmain.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\wrappers\x86.def" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

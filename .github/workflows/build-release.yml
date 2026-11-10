@@ -1,0 +1,136 @@
+name: Build Arabic Release
+
+# يشتغل عند كل push/PR على main أو master، وتقدر تشغّله يدويًا من تبويب Actions (workflow_dispatch).
+# النتيجة: ملف ZIP جاهز (dinput8.dll + الإعدادات) يُرفع في Release بوسم "build-arabic"
+# ويُستبدل مع كل بناء جديد.
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-arabic-release
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # نفس الـ runner الذي يستخدمه ci.yml الأصلي (المشروع يستخدم toolset v145 = Visual Studio 2026)
+    runs-on: windows-2025-vs2026
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      # لو رفعت المشروع من ملف ZIP (بدون ربط الـ submodules)، تكون مجلدات external/* فاضية.
+      # هذه الخطوة تقرأ .gitmodules وتنزّل أي مكتبة ناقصة من GitHub.
+      # (لو رفعت المشروع كـ git repo فيه submodules حقيقية فهذه الخطوة لا تفعل شيئًا.)
+      - name: Fetch missing external libraries
+        shell: bash
+        run: |
+          set -e
+          git config -f .gitmodules --get-regexp '^submodule\..*\.path$' | while read -r key path; do
+            name="${key#submodule.}"; name="${name%.path}"
+            url="$(git config -f .gitmodules --get "submodule.$name.url")"
+            branch="$(git config -f .gitmodules --get "submodule.$name.branch" || true)"
+            if [ -z "$(ls -A "$path" 2>/dev/null)" ]; then
+              echo "Cloning $name -> $path"
+              rm -rf "$path"
+              if [ -n "$branch" ]; then
+                git clone --depth 1 --branch "$branch" "$url" "$path"
+              else
+                git clone --depth 1 "$url" "$path"
+              fi
+            else
+              echo "$path already present, skipping"
+            fi
+          done
+
+      - name: Add msbuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      # نفس ما يفعله ci.yml لنسخة Release: إزالة VERBOSE
+      - name: Remove VERBOSE
+        shell: bash
+        run: |
+          sed -i "s/#define VERBOSE//" dllmain/dllmain.h
+
+      # PostBuildEventUseInBuild=false: لا ننسخ الـ DLL إلى مجلد اللعبة (%BIO4_BIN%) لأنه غير موجود هنا
+      - name: Build Release (Win32)
+        run: |
+          msbuild re4_tweaks.sln /p:Configuration=Release /p:Platform=Win32 /p:PostBuildEventUseInBuild=false /m
+
+      # يجمع الملفات بنفس هيكل ci.yml:  dinput8.dll + dinput8.ini + re4_tweaks/
+      - name: Prepare Release ZIP
+        shell: bash
+        run: |
+          set -e
+          stage="stage"
+          zipPath="re4_tweaks_arabic.zip"
+
+          if [ ! -f "Release/dinput8.dll" ]; then
+            echo "Error: Release/dinput8.dll was not found."
+            exit 1
+          fi
+
+          rm -rf "$stage" "$zipPath"
+          mkdir -p "$stage/re4_tweaks"
+
+          cp Release/dinput8.dll "$stage/"
+          cp settings/settings.ini "$stage/dinput8.ini"
+          cp settings/trainer_settings.ini "$stage/re4_tweaks/trainer.ini"
+          cp -r external/EnglishSubtitleData/Bin32/re4_tweaks/. "$stage/re4_tweaks/"
+          cp -r dist/Bin32/re4_tweaks/. "$stage/re4_tweaks/"
+
+          powershell -NoProfile -Command "Compress-Archive -Path '$stage/*' -DestinationPath '$zipPath' -Force"
+
+          if [ ! -f "$zipPath" ]; then
+            echo "Error: Failed to create ZIP."
+            exit 1
+          fi
+          echo "ZIP created successfully: $zipPath"
+
+      # نحفظ الـ ZIP أيضًا كـ artifact (يعمل حتى في الـ Pull Requests)
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: re4_tweaks_arabic
+          path: re4_tweaks_arabic.zip
+
+      # يحذف الـ Release القديم (ووسمه) ثم ينشئ واحدًا جديدًا على آخر commit.
+      # لا يعمل في الـ Pull Requests حتى لا ينشر Releases منها.
+      - name: Publish Release
+        if: github.event_name != 'pull_request'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete build-arabic --cleanup-tag --yes >/dev/null 2>&1 || true
+
+          gh release create build-arabic \
+            re4_tweaks_arabic.zip \
+            --target "$GITHUB_SHA" \
+            --title "re4_tweaks Arabic (latest build)" \
+            --notes "Automatic build from commit $GITHUB_SHA. Extract the ZIP into the game folder (next to bio4.exe)."
+
+      - name: Show Download Link
+        if: github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          repo="$GITHUB_REPOSITORY"
+          echo ""
+          echo "========================================"
+          echo "BUILD COMPLETED!"
+          echo ""
+          echo "Download:"
+          echo "https://github.com/$repo/releases/download/build-arabic/re4_tweaks_arabic.zip"
+          echo ""
+          echo "Release:"
+          echo "https://github.com/$repo/releases/tag/build-arabic"
+          echo "========================================"

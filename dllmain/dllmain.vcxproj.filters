@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\ModUtils\Patterns.cpp">
+      <Filter>external\ModUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolMenu.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomInfo.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolMenuDebug.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolMenuLights.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="WndProcHook.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="cfgMenu.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="HandleLimits.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="Sofdec.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="FilterXXFixes.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="AspectRatioTweaks.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui.cpp">
+      <Filter>external\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_demo.cpp">
+      <Filter>external\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_draw.cpp">
+      <Filter>external\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_impl_dx9.cpp">
+      <Filter>external\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_impl_win32.cpp">
+      <Filter>external\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_tables.cpp">
+      <Filter>external\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\imgui_widgets.cpp">
+      <Filter>external\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleWnd.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="QTEFixes.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameRateFixes.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardMouseTweaks.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseTurning.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="LAApatch.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="ExceptionHandler.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerTweaks.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="ArabicText.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="ArabicUI.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="EndSceneHook.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="Misc.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayTweaks.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\miniz\miniz.c">
+      <Filter>external\miniz</Filter>
+    </ClCompile>
+    <ClCompile Include="D3D9hook.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioTweaks.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="MathReimpl.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\eHooking\Hook.cpp">
+      <Filter>external\eHooking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\eHooking\HotPatch.cpp">
+      <Filter>external\eHooking</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\eHooking\IATPatch.cpp">
+      <Filter>external\eHooking</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="HDProject.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="ModExpansion.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraTweaks.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_DebugWindows.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\misc\freetype\imgui_freetype.cpp">
+      <Filter>external\ImGui\misc\freetype</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\imgui\misc\cpp\imgui_stdlib.cpp">
+      <Filter>external\ImGui\misc\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="Trainer.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandLine.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFlags.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Utility.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugDisplay.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="AutoUpdater.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\wrappers\wrappers.cpp">
+      <Filter>wrappers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\ImGuiFileDialog\ImGuiFileDialog.cpp">
+      <Filter>external\ImGuiFileDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleMenu.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameplay.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="Trainer_ItemMgr.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayModeFix.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDTweaks.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+    <ClCompile Include="Sections.cpp">
+      <Filter>dllmain</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\external\injector\include\injector\assembly.hpp">
+      <Filter>external\injector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\injector\include\injector\calling.hpp">
+      <Filter>external\injector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\injector\include\injector\hooking.hpp">
+      <Filter>external\injector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\injector\include\injector\injector.hpp">
+      <Filter>external\injector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\injector\include\injector\utility.hpp">
+      <Filter>external\injector</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>resources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\ModUtils\DelimStringReader.h">
+      <Filter>external\ModUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\ModUtils\MemoryMgr.h">
+      <Filter>external\ModUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\ModUtils\Patterns.h">
+      <Filter>external\ModUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFlags.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imconfig.h">
+      <Filter>external\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imgui.h">
+      <Filter>external\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imgui_impl_dx9.h">
+      <Filter>external\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imgui_impl_win32.h">
+      <Filter>external\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imgui_internal.h">
+      <Filter>external\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imstb_rectpack.h">
+      <Filter>external\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imstb_textedit.h">
+      <Filter>external\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\imstb_truetype.h">
+      <Filter>external\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\settings\settings.ini">
+      <Filter>settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\includes\exception.hpp">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="input.hpp">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="gitparams.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="Patches.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\miniz\miniz.h">
+      <Filter>external\miniz</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D9hook.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\includes\log.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\spdlog\include\spdlog\spdlog.h">
+      <Filter>external\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\eHooking\Hook.h">
+      <Filter>external\eHooking</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="dllmain.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\basic_types.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\cCoord.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\cUnit.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\em.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\model.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\GXStruct.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\atariInfo.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\cManager.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\player.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\cMotBase.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\obj.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\camera.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\pad.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\em_set.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\global.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\pl_wep.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\objWep.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\event.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\EtcModel.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\snd.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_DebugWindows.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\misc\freetype\imgui_freetype.h">
+      <Filter>external\ImGui\misc\freetype</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\imgui\misc\cpp\imgui_stdlib.h">
+      <Filter>external\ImGui\misc\cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\includes\FAhashes.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\includes\FAprolight.hpp">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\includes\IBMPlexSansJP_M.hpp">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Trainer.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\room_jmp.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\title.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\settings\trainer_settings.ini">
+      <Filter>settings</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\filter00.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\light.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\item.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\puzzle.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\sscrn.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\em10.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\cloth.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\card.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\cDataSwap.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="ArabicFont.hpp">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="ArabicText.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="ArabicUI.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Utility.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\cam_ctrl.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\GX.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\GXEnums.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\atari.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\gc_math.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\includes\ModuleList.hpp">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\wrappers.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\dinput8.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\dsound.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\wininet.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\version.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\d3d9.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\d3d10.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\d3d11.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\d3d12.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\winmm.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\bink2w64.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\dinput.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\d3d8.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\ddraw.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\msvfw32.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\msacm32.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\binkw32.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\xinput1_3.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\X3DAudio1_7.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\wrappers\shared.h">
+      <Filter>wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioTweaks.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\fade.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\ID.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\roomdata.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\ImGuiFileDialog\ImGuiFileDialog.h">
+      <Filter>external\ImGuiFileDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleWnd.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="sdk\merchant.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\message.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\includes\iniReader.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\simpleini\SimpleIni.h">
+      <Filter>external\simpleini</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK\cockpit.h">
+      <Filter>dllmain\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDTweaks.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+    <ClInclude Include="Sections.h">
+      <Filter>dllmain</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="includes">
+      <UniqueIdentifier>{0b4197c1-e92b-4635-82ba-a9286f6fbc24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{ca2daba6-e9de-43f2-a1bb-51be9b1d0d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dllmain">
+      <UniqueIdentifier>{1bcdb7af-782c-4c74-9568-0406602f0689}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="settings">
+      <UniqueIdentifier>{a5f93009-19d5-47c0-8537-020855d842b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{519c6c33-721f-48c7-ae8d-02adbc3058ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\injector">
+      <UniqueIdentifier>{aae8b126-aaff-4521-8354-1de4e1c22a11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\ModUtils">
+      <UniqueIdentifier>{88d1e229-57d4-46a5-8f87-f1ec6de9bcbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\ImGui">
+      <UniqueIdentifier>{8009d333-9eac-43b4-a9eb-014433e845ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\miniz">
+      <UniqueIdentifier>{f29fc87e-d8bd-43de-a3ca-d1bd4402fcdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\spdlog">
+      <UniqueIdentifier>{48f971d6-b079-4f4c-ba5b-392b6ab453e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\eHooking">
+      <UniqueIdentifier>{f4636442-5897-4e0e-9752-b925ff5f3fef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dllmain\SDK">
+      <UniqueIdentifier>{6f1cea62-3320-4c55-8eaf-678d95a53daf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\ImGui\misc">
+      <UniqueIdentifier>{90d3bf1f-001b-4676-ae3e-a572df7dc0fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\ImGui\misc\cpp">
+      <UniqueIdentifier>{b3c74398-5cef-4091-8940-b8afbd8977d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\ImGui\misc\freetype">
+      <UniqueIdentifier>{84419003-dc17-466d-b01e-6beed7f93767}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wrappers">
+      <UniqueIdentifier>{462d656f-4021-4695-b31c-152e450c072c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\ImGuiFileDialog">
+      <UniqueIdentifier>{6a90538b-9818-4c37-9150-0996803386ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\simpleini">
+      <UniqueIdentifier>{4e462c16-30a0-469e-837e-e087a37306f3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="dllmain.rc">
+      <Filter>resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\wrappers\x86.def">
+      <Filter>wrappers</Filter>
+    </None>
+  </ItemGroup>
+</Project>
